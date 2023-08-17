@@ -1,0 +1,17 @@
+# HACK: Hardcoded example of how a new client added via API 
+# should look like
+example-client.{$CUSTOM_SUBDOMAIN} {
+	reverse_proxy {
+		to https://177.93.131.242
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+
+healthcheck.{$CUSTOM_SUBDOMAIN} {
+  route / {
+    respond "OK"
+  }
+}
